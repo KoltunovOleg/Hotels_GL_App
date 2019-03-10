@@ -1,0 +1,35 @@
+<mat-card class="example-card">
+    <img class="" mat-card-image src="{{picture}}" alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+        <app-search></app-search>
+        <div class="filter-holder">
+            <ul class="filter list-unstyled">
+                <li><a href="#">Hotel</a></li>
+                <li><a href="#">Fishing</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Weather</a></li>
+            </ul>
+        </div>
+        <div class="result-list">
+            <h6 class="text-center">Righteous indignation & like</h6>
+            <div class="list-holder">
+                <ul class="list list-unstyled text-white">
+                    <li *ngFor="let hotel of hotels" (click)="onSelect(hotel)">
+                        <div class="activity-desc">
+                            <h5>{{hotel.title}}</h5>
+                            <p>{{hotel.description}}</p>
+                            <p>{{hotel.address}}</p>
+                            <a href="tel:{{hotel.phone}}">{{hotel.phone}}</a>
+                        </div>
+                        <div class="activity-img">
+                            <ul class="list-unstyled">
+                                <li><img class="rounded-circle" src="{{hotel.photos[0]}}" alt=""></li>
+                                <li><img class="rounded-circle" src="{{hotel.photos[1]}}" alt=""></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,11 @@
+<div class="container mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <app-list [hotels]="hotels" (onChanged)="onChanged($event)"></app-list>
+        </div>
+        <div class="col-md-6">
+            <app-weather [hotel]="selectedHotel"></app-weather>
+            <app-profile [hotel]="selectedHotel"></app-profile>
+        </div>
+    </div>
+</div>
