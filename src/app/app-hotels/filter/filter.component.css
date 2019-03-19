@@ -1,0 +1,13 @@
+.filter-holder {
+    background-color: #fff;
+}
+
+.filter {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.filter li {
+    margin: 0 5px;
+}

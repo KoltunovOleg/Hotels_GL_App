@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Hotel } from '../hotel';
-import { Hotels } from '../damn';
+import { HotelService } from "../services/hotel.service";
+import { SelectedHotelService } from '../services/selected-hotel.service';
+import { Hotel } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-hotels',
@@ -9,15 +10,24 @@ import { Hotels } from '../damn';
 })
 export class AppHotelsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private hotelService: HotelService,
+    private selectedHotelService: SelectedHotelService
+  ) { }
+
+  public hotels: Hotel[];
+  public selectedHotel: Hotel;
 
   ngOnInit() {
+    this.getHotels();
+  }
+
+  getHotels(): void {
+    this.hotels = this.hotelService.getHotels();
+    this.selectedHotel = this.hotels[0];
   }
   
-  hotels = Hotels;
-  selectedHotel: Hotel = Hotels[0];
-
-  onChanged(hotel: Hotel) {
+  selectHotel(hotel: Hotel) {
     this.selectedHotel = hotel;
   }
 }

@@ -7,20 +7,6 @@
     background-size: cover;
 }
 
-.filter-holder {
-    background-color: #fff;
-}
-
-.filter {
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.filter li {
-    margin: 0 5px;
-}
-
 .result-list {
     padding-top: 20px;
     background-color: #E9E6D3;

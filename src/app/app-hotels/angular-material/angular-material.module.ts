@@ -2,7 +2,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, M
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatIconModule
   ],
   exports: [
     MatAutocompleteModule, 
@@ -22,7 +23,8 @@ import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, M
     MatButtonModule, 
     MatListModule, 
     MatFormFieldModule, 
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ]
 })
 
