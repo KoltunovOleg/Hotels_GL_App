@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Hotel } from "../interfaces/interfaces";
+import { FavoritesService } from '../services/favorites.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class ListComponent implements OnInit {
   public picture:string = "assets/images/1.jpg";
   public range: string;
   
-  constructor() { }
+  constructor(
+    private favHotelService: FavoritesService
+  ) { }
   
   ngOnInit() {
   }
@@ -27,7 +30,7 @@ export class ListComponent implements OnInit {
   }
 
   makeFavorite(hotel: Hotel): void {
-    
+    this.favHotelService.addHotel(hotel);
   }
 
   SelectedRaiting(range:string):void {

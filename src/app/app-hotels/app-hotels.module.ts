@@ -11,7 +11,6 @@ import { HotelService } from './services/hotel.service';
 import { SelectedHotelService } from './services/selected-hotel.service';
 import { FilterComponent } from './filter/filter.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,9 @@ import { ButtonComponent } from './button/button.component';
     WeatherComponent, 
     ProfileComponent, 
     SearchComponent, 
-    FilterComponent, FavoritesComponent, ButtonComponent],
+    FilterComponent, 
+    FavoritesComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
