@@ -3,34 +3,34 @@ import { Hotel } from '../interfaces/interfaces';
 import { Hotels } from '../mock/damn';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class FavoritesService {
 
-  private favHotels: Hotel[] = [];
+	private favHotels: Hotel[] = [];
 
-  public getHotels(): Hotel[] {
-    return this.favHotels;
-  }
+	public getHotels(): Hotel[] {
+		return this.favHotels;
+	}
 
-  public addHotel(fav:Hotel): void {
-    console.log(fav);
-  //   console.log(this.favHotels);
-  //   if(!this.favHotels.length) {
-  //     this.favHotels.push(fav);
-  //   } else {
-  //   this.favHotels.map((item) => {
-  //     if(item.id !== fav.id)
-  //     this.favHotels.push(fav);
-  //   });
-  // }
-  }
+	public addHotel(fav: Hotel): void {
 
-  public removeHotel(fav:Hotel): void {
+		if (!this.favHotels.length) {
+			this.favHotels.push(fav);
+		} else if (this.favHotels.every(isHotel)) {
+			this.favHotels.push(fav);
+		}
 
-   this.favHotels.map((item, i, arr) => {
-      if(item.id === fav.id)
-      arr.splice(i, 1);
-    });
-  }
+		function isHotel(hotel: Hotel) {
+			return hotel.id !== fav.id;
+		}
+	}
+
+	public removeHotel(fav: Hotel): void {
+
+		this.favHotels.map((item, i, arr) => {
+			if (item.id === fav.id)
+				arr.splice(i, 1);
+		});
+	}
 }
