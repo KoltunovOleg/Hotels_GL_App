@@ -37,7 +37,19 @@
   background-color: #D5D1B3;
 }
 
-.red-icon {
-  color: #9A1830;
-  font-size: 45px;
+.mat-icon-button {
+  outline: 0;
+  background-color: #9A1830;
+  /* width: 80px;
+  height: 80px; */
+}
+
+/* .mat-icon {
+  font-size: 40px;
+  height: auto;
+  width: auto;
+} */
+
+.example-card {
+  margin: 0 auto;
 }

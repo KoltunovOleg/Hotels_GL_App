@@ -1,0 +1,15 @@
+.navbar {
+  background-color: #e3f2fd;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1050;
+    background-color: #e3f2fd;
+  }
+}

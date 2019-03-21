@@ -1,25 +1,27 @@
 .profile-card {
-    background: #2CBA54;
+  margin: 0 auto;
+  max-width: 400px;
+  background: #2CBA54;
 }
 
 .teddy-follow {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    background: #fff;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
 }
 
 .teddy-follow:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 1px;
-    height: 50%;
-    background: #000;
-    transform: translateY(-50%);
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  background: #000;
+  transform: translateY(-50%);
 }
 
 .folw {
-    display: flex;
-    flex-direction: column
+  display: flex;
+  flex-direction: column
 }
