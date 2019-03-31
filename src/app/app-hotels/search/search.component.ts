@@ -2,8 +2,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Hotel } from "../interfaces/interfaces";
-import { Hotels } from '../mock/damn';
+import { Hotels } from 'src/app/mock/damn';
+import { Hotel } from 'src/app/interfaces/interfaces';
 
 @Component({
 	selector: 'app-search',

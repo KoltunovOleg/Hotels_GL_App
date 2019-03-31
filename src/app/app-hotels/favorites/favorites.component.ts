@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FavoritesService } from '../services/favorites.service';
-import { Hotel } from '../interfaces/interfaces';
+import { Component, OnInit, DoCheck} from '@angular/core';
+import { FavoritesService } from 'src/app/services/favorites.service';
+import { Hotel } from 'src/app/interfaces/interfaces';
 
 @Component({
 	selector: 'app-favorites',
 	templateUrl: './favorites.component.html',
 	styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent implements OnInit, DoCheck {
 
 	constructor(
 		private favHotelsService: FavoritesService
@@ -16,11 +16,15 @@ export class FavoritesComponent implements OnInit {
 	public favHotels: Hotel[];
 
 	ngOnInit() {
-		this.favHotels = this.favHotelsService.getHotels()
+		this.favHotels = this.favHotelsService.getHotels();
+	}
+
+	ngDoCheck() {
+		this.favHotels = this.favHotelsService.getHotels();
 	}
 
 	delFavorite(hotel: Hotel): void {
-		this.favHotelsService.removeHotel(hotel);
+		this.favHotels = this.favHotelsService.removeHotel(hotel);
 	}
 
 }

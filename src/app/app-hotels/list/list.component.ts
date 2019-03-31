@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Hotel } from "../interfaces/interfaces";
-import { FavoritesService } from '../services/favorites.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
+import { Hotel } from 'src/app/interfaces/interfaces';
 
 
 @Component({
@@ -22,14 +22,15 @@ export class ListComponent implements OnInit {
   
   @Input() hotels: Hotel;
 
-  @Output() SelectedHotel = new EventEmitter<Hotel>();
+  @Output() selectedHotel = new EventEmitter<Hotel>();
 
   selectHotel(hotel: Hotel): void {
-    this.SelectedHotel.emit(hotel);
+    this.selectedHotel.emit(hotel);
     this.picture = hotel.picture;
   }
 
   makeFavorite(hotel: Hotel): void {
+    event.stopPropagation();
     this.favHotelService.addHotel(hotel);
   }
 

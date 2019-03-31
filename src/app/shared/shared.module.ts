@@ -31,5 +31,5 @@ import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, M
 })
 
 
-export class AngularMaterialModule {
+export class SharedModule {
 }

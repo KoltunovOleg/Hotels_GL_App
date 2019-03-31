@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from "../services/hotel.service";
-import { SelectedHotelService } from '../services/selected-hotel.service';
 import { Hotel } from '../interfaces/interfaces';
 
 @Component({
@@ -11,18 +10,13 @@ import { Hotel } from '../interfaces/interfaces';
 export class AppHotelsComponent implements OnInit {
 
   constructor(
-    private hotelService: HotelService,
-    private selectedHotelService: SelectedHotelService
+    private hotelService: HotelService
   ) { }
 
   public hotels: Hotel[];
   public selectedHotel: Hotel;
 
   ngOnInit() {
-    this.getHotels();
-  }
-
-  getHotels(): void {
     this.hotels = this.hotelService.getHotels();
     this.selectedHotel = this.hotels[0];
   }

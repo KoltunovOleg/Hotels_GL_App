@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppHotelsComponent } from './app-hotels/app-hotels.component';
 import { ListComponent } from './list/list.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { HotelService } from './services/hotel.service';
-import { SelectedHotelService } from './services/selected-hotel.service';
 import { FilterComponent } from './filter/filter.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SharedModule } from '../shared/shared.module';
+import { AppHotelsComponent } from './app-hotels.component';
+import { HotelService } from '../services/hotel.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +25,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularMaterialModule
+    SharedModule
   ],
-  providers: [HotelService, SelectedHotelService],
+  providers: [HotelService],
   exports: [AppHotelsComponent]
 })
 export class AppHotelsModule { }

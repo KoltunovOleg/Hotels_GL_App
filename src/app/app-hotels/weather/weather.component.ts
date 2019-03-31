@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hotel } from "../interfaces/interfaces";
+import { Hotel } from 'src/app/interfaces/interfaces';
 
 
 @Component({
