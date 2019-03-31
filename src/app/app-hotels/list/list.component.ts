@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { Hotel } from 'src/app/interfaces/interfaces';
+import { HotelService } from 'src/app/services/hotel.service';
 
 
 @Component({
@@ -10,17 +11,19 @@ import { Hotel } from 'src/app/interfaces/interfaces';
 })
 export class ListComponent implements OnInit {
 
+  public hotels: Hotel[];
   public picture:string = "assets/images/1.jpg";
-  public range: string;
   
   constructor(
-    private favHotelService: FavoritesService
+    private favHotelService: FavoritesService,
+    private filterService: HotelService
   ) { }
   
   ngOnInit() {
+    this.hotels = this.hotelsArr;
   }
   
-  @Input() hotels: Hotel;
+  @Input('hotels') hotelsArr: Hotel[];
 
   @Output() selectedHotel = new EventEmitter<Hotel>();
 
@@ -34,7 +37,9 @@ export class ListComponent implements OnInit {
     this.favHotelService.addHotel(hotel);
   }
 
-  SelectedRaiting(range:string):void {
-    this.range = range;
+  selectedRaiting(range:string):void {
+    // this.hotels = this.hotels.filter(hotel => hotel.stars == Number(range)+2);
+    this.hotels = this.filterService.getfiltrHotels(Number(range)+2);
+    console.log(this.hotels);
   }
 }

@@ -1,8 +1,8 @@
 <div class="filter-holder">
     <!-- <span>{{range}}</span> -->
-    <ul class="filter list-unstyled" (click)="getRange($event.target)">
+    <ul class="filter list-unstyled">
         <li *ngFor="let range of rating; let i = index">
-            <a href="#" [attr.data-range]="i">{{range}}</a>
+            <a href="#" [attr.data-range]="i" (click)="getRange($event, $event.target)">{{range}}</a>
         </li>
     </ul>
 </div>

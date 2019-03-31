@@ -1,11 +1,11 @@
-import { Component, Output} from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css'],
 })
+
 export class FilterComponent{
 
   // public range: string = "0";
@@ -13,9 +13,11 @@ export class FilterComponent{
 
   @Output() selectedRaiting = new EventEmitter();
 
-  getRange(item: HTMLBaseElement):void {
-    const valueAttr:string = item.attributes['data-range'].value;
+  getRange(event: MouseEvent, elem: HTMLLinkElement):void {
+    event.preventDefault();
+    const valueAttr:string = elem.attributes['data-range'].value;
     this.selectedRaiting.emit(valueAttr);
     // this.range = valueAttr;
+    console.log(event, elem.attributes['data-range'].value);
   }
 }
