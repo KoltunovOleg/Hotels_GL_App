@@ -2,7 +2,9 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatAutocompleteModule, MatCardModule, MatButtonModule, MatListModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDividerModule } from '@angular/material';
+import { MatAutocompleteModule, MatCardModule, MatButtonModule, 
+         MatListModule, MatFormFieldModule, MatInputModule, 
+         MatIconModule, MatDividerModule } from '@angular/material';
 
 
 @NgModule({

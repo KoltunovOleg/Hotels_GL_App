@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppHotelsComponent } from './app-hotels.component';
 import { HotelService } from '../services/hotel.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     FormsModule,
     SharedModule
   ],
-  providers: [HotelService],
+  providers: [HotelService, MatSnackBarModule],
   exports: [AppHotelsComponent]
 })
 export class AppHotelsModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { Hotel } from 'src/app/interfaces/interfaces';
 import { HotelService } from 'src/app/services/hotel.service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ListComponent implements OnInit {
   
   constructor(
     private favHotelService: FavoritesService,
-    private filterService: HotelService
+    private filterService: HotelService,
+    // private snackBar: MatSnackBar
   ) { }
   
   ngOnInit() {
@@ -36,6 +38,7 @@ export class ListComponent implements OnInit {
   public makeFavorite(hotel: Hotel): void {
     event.stopPropagation();
     this.favHotelService.addHotel(hotel);
+    // this.openSnackBar('Добавлено в favorites!');
   }
 
   public selectedRaiting(range:string):void {
@@ -45,4 +48,10 @@ export class ListComponent implements OnInit {
   public searchText(text: string) {
     return this.searchtxt =  text;
   }
+
+  // public openSnackBar(message: string, action?: string) {
+  //   this.snackBar.open(message, action, {
+  //     duration: 2000,
+  //   });
+  // }
 }
