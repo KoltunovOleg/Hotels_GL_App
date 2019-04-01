@@ -70,5 +70,28 @@ export const Hotels: Hotel[] = [
         photo: 'assets/images/b3.jpg'
       },
       stars: 5
+    },
+    {
+      id: 4,
+      title: 'Universal Cabana-2',
+      address: 'Orlando',
+      description: 'Best two!',
+      phone: '+3242353434',
+      picture: 'assets/images/1.jpg',
+      photos: [
+        'assets/images/res.jpg',
+        'assets/images/r1.jpg'
+      ],
+      weather:  {
+        temperature: 15,
+        wind: 1,
+        icon: 'cloud'
+      },
+      profile: {
+        followers: 200,
+        following: 18,
+        photo: 'assets/images/b1.jpg'
+      },
+      stars: 3
     }
   ];

@@ -1,10 +1,10 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Hotel" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
+        <input type="text" placeholder="Hotel" matInput (input)="searchHotel($event.target.value)">
+        <!-- <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let hotel of filteredOptions | async" [value]="hotel.description">
                 {{hotel.description}}
             </mat-option>
-        </mat-autocomplete>
+        </mat-autocomplete> -->
     </mat-form-field>
 </form>

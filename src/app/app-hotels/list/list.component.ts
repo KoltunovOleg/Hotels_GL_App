@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
 
   public hotels: Hotel[];
   public picture:string = "assets/images/1.jpg";
+  public searchtxt: string;
   
   constructor(
     private favHotelService: FavoritesService,
@@ -27,19 +28,21 @@ export class ListComponent implements OnInit {
 
   @Output() selectedHotel = new EventEmitter<Hotel>();
 
-  selectHotel(hotel: Hotel): void {
+  public selectHotel(hotel: Hotel): void {
     this.selectedHotel.emit(hotel);
     this.picture = hotel.picture;
   }
 
-  makeFavorite(hotel: Hotel): void {
+  public makeFavorite(hotel: Hotel): void {
     event.stopPropagation();
     this.favHotelService.addHotel(hotel);
   }
 
-  selectedRaiting(range:string):void {
-    // this.hotels = this.hotels.filter(hotel => hotel.stars == Number(range)+2);
+  public selectedRaiting(range:string):void {
     this.hotels = this.filterService.getfiltrHotels(Number(range)+2);
-    console.log(this.hotels);
+  }
+
+  public searchText(text: string) {
+    return this.searchtxt =  text;
   }
 }

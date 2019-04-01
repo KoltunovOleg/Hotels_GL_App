@@ -10,6 +10,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppHotelsComponent } from './app-hotels.component';
 import { HotelService } from '../services/hotel.service';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HotelService } from '../services/hotel.service';
     ProfileComponent, 
     SearchComponent, 
     FilterComponent, 
-    FavoritesComponent
+    FavoritesComponent,
+    SearchFilterPipe
   ],
   imports: [
     CommonModule,

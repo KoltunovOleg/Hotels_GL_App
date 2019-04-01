@@ -8,7 +8,6 @@ import { Component, Output, EventEmitter} from '@angular/core';
 
 export class FilterComponent{
 
-  // public range: string = "0";
   public rating: Array<string> = ["All", "***", "****", "*****"];
 
   @Output() selectedRaiting = new EventEmitter();
@@ -17,7 +16,5 @@ export class FilterComponent{
     event.preventDefault();
     const valueAttr:string = elem.attributes['data-range'].value;
     this.selectedRaiting.emit(valueAttr);
-    // this.range = valueAttr;
-    console.log(event, elem.attributes['data-range'].value);
   }
 }

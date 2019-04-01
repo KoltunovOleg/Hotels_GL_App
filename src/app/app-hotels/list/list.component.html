@@ -1,13 +1,13 @@
 <mat-card class="example-card">
     <img mat-card-image [src]="picture" alt="Photo of a Shiba Inu">
     <mat-card-actions>
-        <app-search></app-search>
+        <app-search (searchText)="searchText($event)"></app-search>
         <app-filter (selectedRaiting)="selectedRaiting($event)"></app-filter>
         <div class="result-list">
             <h6 class="text-center">Righteous indignation & like</h6>
             <div class="list-holder">
                 <ul class="list list-unstyled text-white">
-                    <li *ngFor="let hotel of hotels" (click)="selectHotel(hotel)">
+                    <li *ngFor="let hotel of hotels | searchFilter: searchtxt" (click)="selectHotel(hotel)">
                         <div class="activity-desc">
                             <h5>{{hotel.title}}</h5>
                             <p>{{hotel.description}}</p>

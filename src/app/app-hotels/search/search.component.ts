@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 import { Hotels } from 'src/app/mock/damn';
 import { Hotel } from 'src/app/interfaces/interfaces';
 import { FormControl } from '@angular/forms';
@@ -13,29 +13,12 @@ import { HotelService } from 'src/app/services/hotel.service';
 })
 export class SearchComponent {
 
-	public hotels: Hotel[];
-  myControl = new FormControl();
-  // options: string[] = ['One', 'Two', 'Three'];
-	filteredOptions: Observable<Hotel[]>;
+  // filteredOptions: Observable<Hotel[]>;
+  
+  @Output() searchText = new EventEmitter<string>();
 
-	constructor(
-    private hotelService: HotelService
-  ) { }
-	
-	
-  ngOnInit() {
-		this.hotels = this.hotelService.getHotels();
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-  }
-
-  private _filter(value: string): Hotel[] {
-    const filterValue = value.toLowerCase();
-
-    return this.hotels.filter(hotel => hotel.title.toLowerCase().includes(filterValue));
+  public searchHotel(value: string) {
+    this.searchText.emit(value);
   }
 
 }
