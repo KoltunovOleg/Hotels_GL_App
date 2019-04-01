@@ -91,6 +91,8 @@ THE SOFTWARE.
 
 @angular/material/core
 
+@angular/material/dialog
+
 @angular/material/divider
 
 @angular/material/form-field
@@ -98,6 +100,8 @@ THE SOFTWARE.
 @angular/material/icon
 
 @angular/material/list
+
+@angular/material/snack-bar
 
 @angular/platform-browser
 MIT
