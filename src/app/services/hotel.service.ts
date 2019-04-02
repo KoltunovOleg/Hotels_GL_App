@@ -8,9 +8,9 @@ export class HotelService {
 
 	private filteredHotels: Hotel[] = this.getHotels();
 
-  // public getHotels(): Hotel[] {
-  //  return Hotels;
-  // }
+  public getHotels(): Hotel[] {
+   return Hotels;
+  }
 
 	public getfiltrHotels(rating: number): Hotel[] {
 		if (rating != 2) {
@@ -22,7 +22,7 @@ export class HotelService {
 	}
 
 	// async setTimeout
-	public getHotels(): any {
+	public getHotelsTimeout(): any {
 		return new Promise<Hotel[]>((res) => {
 			setTimeout(() => {
 				res(Hotels);

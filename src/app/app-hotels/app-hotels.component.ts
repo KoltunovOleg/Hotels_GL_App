@@ -23,7 +23,7 @@ export class AppHotelsComponent implements OnInit{
 		// this.selectedHotel = this.hotels[0];
 
 		// async setTimeout
-		this.hotelService.getHotels().then(res => {
+		this.hotelService.getHotelsTimeout().then(res => {
 			this.hotels = res;
 			this.selectedHotel = this.hotels[0];
 		});

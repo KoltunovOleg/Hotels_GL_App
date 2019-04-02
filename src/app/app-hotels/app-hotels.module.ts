@@ -13,6 +13,7 @@ import { HotelService } from '../services/hotel.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { MatSnackBarModule } from '@angular/material';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
+import { PrealoadDirective } from './directive/preaload.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
     FilterComponent, 
     FavoritesComponent,
     SearchFilterPipe,
-    ProgressbarComponent
+    ProgressbarComponent,
+    PrealoadDirective
   ],
   imports: [
     CommonModule,
