@@ -9,7 +9,7 @@ export class HotelService {
   private filteredHotels: Hotel[] = this.getHotels();
 
   public getHotels(): Hotel[] {
-    return Hotels;
+   return Hotels;
   }
 
   public getfiltrHotels(rating:number): Hotel[] {
