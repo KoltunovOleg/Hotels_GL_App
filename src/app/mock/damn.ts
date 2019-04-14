@@ -4,6 +4,7 @@ import { Hotel } from '../interfaces/interfaces';
 export const Hotels: Hotel[] = [
     {
       id: 0,
+      key: 0,
       title: 'Universal Cabana',
       address: 'Orlando',
       description: 'Best one!',
@@ -27,6 +28,7 @@ export const Hotels: Hotel[] = [
     },
     {
       id: 1,
+      key: 1,
       title: 'Kharkov plaza',
       address: 'Kharkov',
       description: 'Five Stars',
@@ -50,6 +52,7 @@ export const Hotels: Hotel[] = [
     },
     {
       id: 2,
+      key: 2,
       title: 'Hotel name',
       address: 'Orlando',
       description: 'Lorem ipson0',
@@ -73,6 +76,7 @@ export const Hotels: Hotel[] = [
     },
     {
       id: 4,
+      key: 4,
       title: 'Universal Cabana-2',
       address: 'Orlando',
       description: 'Best two!',

@@ -1,5 +1,6 @@
 export interface Hotel {
   id: number;
+  key: number;
   title: string;
   address: string;
   description: string;

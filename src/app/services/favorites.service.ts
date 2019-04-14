@@ -16,12 +16,12 @@ export class FavoritesService {
 	private favoritesHotelsSource$ = new Subject<Hotel[]>();
 	public favoritesHotels$ = this.favoritesHotelsSource$.asObservable();
 
-	private httpOptions: object = {
-		headers: new HttpHeaders({
-			'Content-Type':  'application/json',
-			'Authorization': 'my-auth-token'
-		})
-	};
+	// private httpOptions: object = {
+	// 	headers: new HttpHeaders({
+	// 		'Content-Type':  'application/json',
+	// 		'Authorization': 'my-auth-token'
+	// 	})
+	// };
 
 	constructor(
 		private http: HttpClient,
@@ -33,16 +33,26 @@ export class FavoritesService {
 	}
 
 	public addHotel(fav: Hotel):  Hotel[]{
-		console.log("endPoint fav: ", fav);
-		this.http.get(`${this.url}?id=${fav.id}`).subscribe((data: Hotel[]) => {
-			// console.log("endPoint fav: ", data);
+		// console.log("endPoint fav: ", fav);
+		this.http.get(`${this.url}?key=${fav.key}`).subscribe((data: Hotel[]) => {
+			console.log("endPoint fav: ", data);
 			if(data.length) {
 				// return this.favoritesHotelsSource$.next(data);
 				this.openSnackBar('Было добавлено в favorites раньше!');
 			} else {
-				this.http.post<Hotel>(this.url, fav, this.httpOptions).subscribe(val=> console.log(val));
-				this.favHotels = [...this.favHotels, fav];
-				this.openSnackBar('Добавлено в favorites!');
+				this.http.post<Hotel>(this.url, 
+					{
+						key: fav.key,
+						title: fav.title
+					})
+					.subscribe(
+					response => {
+						console.log("response: ", response);
+						
+						this.favHotels = [...this.favHotels, response];
+						this.openSnackBar('Добавлено в favorites!');
+					}
+				);
     // .pipe(
     //   // catchError(this.handleError('addHero', fav))
     // );
