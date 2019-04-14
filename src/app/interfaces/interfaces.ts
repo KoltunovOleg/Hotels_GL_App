@@ -26,3 +26,9 @@ export interface IProfile {
     following: number,
     photo: string
 }
+
+export interface IFavHotel {
+  id: number;
+  key: number;
+  title: string;
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Hotel } from '../interfaces/interfaces';
+import { Hotel, IFavHotel } from '../interfaces/interfaces';
 import { MatSnackBar } from '@angular/material';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
@@ -13,68 +13,58 @@ export class FavoritesService {
 	private favHotels: Hotel[] = [];
 
 	private url: string = "http://localhost:3004/favorites";
-	private favoritesHotelsSource$ = new Subject<Hotel[]>();
+	private favoritesHotelsSource$ = new Subject<any>();
 	public favoritesHotels$ = this.favoritesHotelsSource$.asObservable();
 
-	// private httpOptions: object = {
-	// 	headers: new HttpHeaders({
-	// 		'Content-Type':  'application/json',
-	// 		'Authorization': 'my-auth-token'
-	// 	})
-	// };
 
 	constructor(
 		private http: HttpClient,
 		private snackBar: MatSnackBar
 	) {}
 
-	public getHotels(): Hotel[] {
-		return this.favHotels;
+	public getHotels(): void{
+		this.http.get(this.url).subscribe((data: IFavHotel[]) => {
+			this.favoritesHotelsSource$.next(data)
+		})
 	}
 
-	public addHotel(fav: Hotel):  Hotel[]{
-		// console.log("endPoint fav: ", fav);
-		this.http.get(`${this.url}?key=${fav.key}`).subscribe((data: Hotel[]) => {
-			console.log("endPoint fav: ", data);
+	public addHotel(fav: IFavHotel): void{
+		this.http.get(`${this.url}?key=${fav.key}`).subscribe((data: IFavHotel[]) => {
 			if(data.length) {
-				// return this.favoritesHotelsSource$.next(data);
+
 				this.openSnackBar('Было добавлено в favorites раньше!');
+
 			} else {
-				this.http.post<Hotel>(this.url, 
+				this.http.post<IFavHotel>(this.url, 
 					{
 						key: fav.key,
 						title: fav.title
 					})
 					.subscribe(
-					response => {
-						console.log("response: ", response);
-						
-						this.favHotels = [...this.favHotels, response];
+					() => {
+						this.http.get(this.url).subscribe((data: IFavHotel[]) => {
+							this.favoritesHotelsSource$.next(data)
+						})
+
 						this.openSnackBar('Добавлено в favorites!');
 					}
 				);
-    // .pipe(
-    //   // catchError(this.handleError('addHero', fav))
-    // );
 			}
 		})
-		// const isAddedHotel = this.favHotels.find((hotel) => hotel.id === fav.id);
-
-
-		// if (!isAddedHotel) {
-		// 	this.favHotels = [...this.favHotels, fav];
-		// 	this.openSnackBar('Добавлено в favorites!');
-		// } else {
-		// 	this.openSnackBar('Было добавлено в favorites раньше!');
-		// }
-		
-		return this.favHotels;
 	}
 
-	public removeHotel(fav: Hotel): Hotel[] {
-		// this.openSnackBar('Удалено из favorites!');
-		// return this.favHotels = this.favHotels.filter(hotel => hotel.id !== fav.id);
-		return this.favHotels;
+	public removeHotel(fav: IFavHotel): void {
+		this.http.delete(`${this.url}/${fav.id}`).subscribe(
+			(response: IFavHotel) => {
+
+				// Изменить эту часть на более правильную концепцию?
+				// Повторяется код(пересмотреть)
+				this.http.get(this.url).subscribe((data: IFavHotel[]) => {
+					this.favoritesHotelsSource$.next(data)
+				})
+
+				this.openSnackBar('Удалено из favorites!');
+			})
 	}
 
 	private openSnackBar(message: string, action?: string) {

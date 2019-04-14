@@ -1,32 +1,31 @@
-import { Component, OnInit, DoCheck} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
-import { Hotel } from 'src/app/interfaces/interfaces';
-import { HotelService } from 'src/app/services/hotel.service';
+import { IFavHotel } from 'src/app/interfaces/interfaces';
 
 @Component({
 	selector: 'app-favorites',
 	templateUrl: './favorites.component.html',
 	styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit, DoCheck {
+export class FavoritesComponent implements OnInit  {
 
 	constructor(
 		private favHotelsService: FavoritesService
 
 	) { }
 
-	public favHotels: Hotel[];
+	public favHotels: IFavHotel[] = [];
 
 	ngOnInit() {
-		this.favHotels = this.favHotelsService.getHotels();
+		this.favHotelsService.getHotels();
+		this.favHotelsService.favoritesHotels$.subscribe(data => {
+				this.favHotels = data;
+			}
+		);
 	}
 
-	ngDoCheck() {
-		this.favHotels = this.favHotelsService.getHotels();
-	}
-
-	delFavorite(hotel: Hotel): void {
-		this.favHotels = this.favHotelsService.removeHotel(hotel);
+	delFavorite(hotel: IFavHotel): void {
+		this.favHotelsService.removeHotel(hotel);
 	}
 
 }

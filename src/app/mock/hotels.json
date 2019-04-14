@@ -1201,31 +1201,5 @@
       "stars": 2
     }
   ],
-  "favorites": [
-    {
-      "key": 0,
-      "title": "VonRueden Inc",
-      "id": 1
-    },
-    {
-      "key": 1,
-      "title": "Davis, Herzog and Hahn",
-      "id": 2
-    },
-    {
-      "key": 3,
-      "title": "VonRueden and Sons",
-      "id": 3
-    },
-    {
-      "key": 4,
-      "title": "O'Connell - Maggio",
-      "id": 4
-    },
-    {
-      "key": 5,
-      "title": "Reilly, Mante and Auer",
-      "id": 5
-    }
-  ]
+  "favorites": []
 }
