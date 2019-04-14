@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck} from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { Hotel } from 'src/app/interfaces/interfaces';
+import { HotelService } from 'src/app/services/hotel.service';
 
 @Component({
 	selector: 'app-favorites',
@@ -11,6 +12,7 @@ export class FavoritesComponent implements OnInit, DoCheck {
 
 	constructor(
 		private favHotelsService: FavoritesService
+
 	) { }
 
 	public favHotels: Hotel[];

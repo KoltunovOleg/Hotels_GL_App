@@ -7,6 +7,7 @@ import { AppHotelsModule } from "./app-hotels/app-hotels.module";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule, MatSnackBarModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatDialogModule, MatSnackBarModule } from '@angular/material';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

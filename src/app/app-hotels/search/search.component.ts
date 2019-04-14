@@ -12,10 +12,10 @@ import { HotelService } from 'src/app/services/hotel.service';
 	styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-
-  // filteredOptions: Observable<Hotel[]>;
   
   @Output() searchText = new EventEmitter<string>();
+
+  constructor(){}
 
   public searchHotel(value: string) {
     this.searchText.emit(value);

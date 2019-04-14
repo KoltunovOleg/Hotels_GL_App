@@ -13,8 +13,6 @@ export class SearchFilterPipe implements PipeTransform {
       return hotelsArr;
     }
 
-
-    
     hotelsArr = hotels.filter(hotel => {
       const title:string  = hotel.title.toLowerCase();
       const description:string  = hotel.description.toLowerCase();
