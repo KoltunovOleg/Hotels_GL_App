@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { IFavHotel } from 'src/app/interfaces/interfaces';
 
@@ -7,7 +7,7 @@ import { IFavHotel } from 'src/app/interfaces/interfaces';
 	templateUrl: './favorites.component.html',
 	styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit  {
+export class FavoritesComponent implements OnInit {
 
 	constructor(
 		private favHotelsService: FavoritesService
@@ -19,8 +19,12 @@ export class FavoritesComponent implements OnInit  {
 	ngOnInit() {
 		this.favHotelsService.getHotels();
 		this.favHotelsService.favoritesHotels$.subscribe(data => {
-				this.favHotels = data;
+			if (data.delete) {
+				this.favHotels = this.favHotels.filter(item => item.id !== data.delete);
+			} else {
+				this.favHotels = [...this.favHotels, ...data];
 			}
+		}
 		);
 	}
 
