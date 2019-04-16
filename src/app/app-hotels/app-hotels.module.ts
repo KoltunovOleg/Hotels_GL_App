@@ -14,6 +14,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { MatSnackBarModule } from '@angular/material';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { PrealoadDirective } from './directive/preaload.directive';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PrealoadDirective } from './directive/preaload.directive';
     FavoritesComponent,
     SearchFilterPipe,
     ProgressbarComponent,
-    PrealoadDirective
+    PrealoadDirective,
+    PaginationComponent
   ],
   imports: [
     CommonModule,

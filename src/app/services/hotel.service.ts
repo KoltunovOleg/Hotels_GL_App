@@ -24,8 +24,9 @@ export class HotelService {
 
 
 	public getDefaultHotelsList() {
-		this.http.get(this.url).subscribe((data: Hotel[]) => {
-			return this.hotelsSource$.next(data);
+		this.http.get<any>(this.url, {observe: 'response'}).subscribe(res => {
+			console.log(res.headers.get('X-Total-Count'));
+			return this.hotelsSource$.next(res.body);
 		})
 	}
 
@@ -46,8 +47,9 @@ export class HotelService {
 			}
 		}, '');
 
-		this.http.get(this.url + endPoint).subscribe((data: Hotel[]) => {
-			return this.filterHotelsSource$.next(data);
+		this.http.get<any>(this.url + endPoint,{observe: 'response'}).subscribe(res => {
+			console.log(res.headers.get('X-Total-Count'));
+			return this.filterHotelsSource$.next(res.body);
 		})
 		return this.filteredHotels$;
 	}

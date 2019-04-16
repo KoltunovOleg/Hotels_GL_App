@@ -1,31 +1,32 @@
 <mat-card class="example-card">
-	<img mat-card-image [src]="picture" alt="Photo of a Shiba Inu">
-	<mat-card-actions>
-		<app-search (searchText)="searchText($event)"></app-search>
-		<app-filter (selectedRaiting)="selectedRaiting($event)"></app-filter>
-		<div class="result-list">
-			<h6 class="text-center">Righteous indignation & like</h6>
-			<div class="list-holder">
-				<ul class="list list-unstyled text-white">
-					<li *ngFor="let hotel of hotels; let odd = odd" (click)="selectHotel(hotel)" [ngClass]="{ odd: odd }">
-						<div class="activity-desc">
-							<h5>{{hotel.title}}</h5>
-							<p>{{hotel.description}}</p>
-							<p>{{hotel.address}}</p>
-							<a href="tel:{{hotel.phone}}">{{hotel.phone}}</a>
-						</div>
-						<div class="activity-img">
-							<ul class="list-unstyled d-flex mb-4">
-								<li class="mr-3"><img class="rounded-circle" src="{{hotel.photos[0]}}" alt=""></li>
-								<li><img class="rounded-circle" src="{{hotel.photos[1]}}" alt=""></li>
-							</ul>
-							<button mat-mini-fab class="mat-icon-button" color="primary" (click)="makeFavorite(hotel)">
-								<mat-icon class="red-icon">favorite</mat-icon>
-							</button>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</mat-card-actions>
+    <img mat-card-image [src]="picture" alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+        <app-search (searchText)="searchText($event)"></app-search>
+        <app-filter (selectedRaiting)="selectedRaiting($event)"></app-filter>
+        <div class="result-list">
+            <h6 class="text-center">Righteous indignation & like</h6>
+            <div class="list-holder">
+                <ul class="list list-unstyled text-white">
+                    <li *ngFor="let hotel of hotels; let odd = odd" (click)="selectHotel(hotel)" [ngClass]="{ odd: odd }">
+                        <div class="activity-desc">
+                            <h5>{{hotel.title}}</h5>
+                            <p>{{hotel.description}}</p>
+                            <p>{{hotel.address}}</p>
+                            <a href="tel:{{hotel.phone}}">{{hotel.phone}}</a>
+                        </div>
+                        <div class="activity-img">
+                            <ul class="list-unstyled d-flex mb-4">
+                                <li class="mr-3"><img class="rounded-circle" src="{{hotel.photos[0]}}" alt=""></li>
+                                <li><img class="rounded-circle" src="{{hotel.photos[1]}}" alt=""></li>
+                            </ul>
+                            <button mat-mini-fab class="mat-icon-button" color="primary" (click)="makeFavorite(hotel)">
+															<mat-icon class="red-icon">favorite</mat-icon>
+														</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <app-pagination></app-pagination>
+    </mat-card-actions>
 </mat-card>
