@@ -25,6 +25,7 @@ export class AppHotelsComponent implements OnInit {
 	ngOnInit() {
 		this.hotelService.getDefaultHotelsList();
 	}
+	
 
 	selectHotel(hotel: Hotel) {
 		this.selectedHotel = hotel;
