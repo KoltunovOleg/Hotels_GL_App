@@ -1,6 +1,6 @@
 # GitHub page
 
-`https://koltunovoleg.github.io/Hotels_GL_App/v1/`
+`[https://koltunovoleg.github.io/Hotels_GL_App/v1/](https://koltunovoleg.github.io/Hotels_GL_App/v1)`
 
 # AppHotels
 
