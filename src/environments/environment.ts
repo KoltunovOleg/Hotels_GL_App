@@ -4,7 +4,14 @@
 
 export const environment = {
 	production: false,
-	baseUrl: 'http://localhost:3004'
+	firebase: {
+		apiKey: "AIzaSyB1KO7faF4lKA7vxAsmr0Glymzdg_gVLQw",
+    authDomain: "apphotelsgl.firebaseapp.com",
+    databaseURL: "https://apphotelsgl.firebaseio.com",
+    projectId: "apphotelsgl",
+    storageBucket: "apphotelsgl.appspot.com",
+    messagingSenderId: "962477810059"
+}
 };
 
 /*
