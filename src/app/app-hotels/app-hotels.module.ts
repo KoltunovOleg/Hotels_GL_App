@@ -16,10 +16,6 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { PrealoadDirective } from './directive/preaload.directive';
 import { PaginationComponent } from './pagination/pagination.component';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from 'src/environments/environment';
-
 @NgModule({
   declarations: [
     AppHotelsComponent, 
@@ -38,9 +34,7 @@ import { environment } from 'src/environments/environment';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule,
-    AngularFireModule.initializeApp(environment.firebase, 'apphotelsgl'),
-    AngularFireDatabaseModule
+    SharedModule
   ],
   providers: [HotelService, MatSnackBarModule],
   exports: [AppHotelsComponent]

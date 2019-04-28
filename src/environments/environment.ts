@@ -4,14 +4,7 @@
 
 export const environment = {
 	production: false,
-	firebase: {
-		apiKey: "AIzaSyB1KO7faF4lKA7vxAsmr0Glymzdg_gVLQw",
-    authDomain: "apphotelsgl.firebaseapp.com",
-    databaseURL: "https://apphotelsgl.firebaseio.com",
-    projectId: "apphotelsgl",
-    storageBucket: "apphotelsgl.appspot.com",
-    messagingSenderId: "962477810059"
-}
+	baseUrl: 'https://my-json-server.typicode.com/koltunovoleg/demo'
 };
 
 /*

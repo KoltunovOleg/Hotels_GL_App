@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	baseUrl: 'http://localhost:3004'
+	baseUrl: 'https://my-json-server.typicode.com/koltunovoleg/demo'
 };

@@ -3,25 +3,19 @@ import { Hotel } from '../interfaces/interfaces';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class HotelService {
 
-	// private url: string = `${environment.baseUrl}/hotels?_page=1&_limit=10`;
-	private url: string = `${environment.baseUrl}/hotels?_page=1&_limit=10`;
-	// public books: FirebaseListObservable<Book[]>;
+	private url: string = `${environment.baseUrl}/hotels?_page=1&_limit=5`;
 	private filterHotelsSource$ = new Subject<Hotel[]>();
 	private hotelsSource$ = new Subject<Hotel[]>();
 
 	constructor(
-		private http: HttpClient,
-		db: AngularFireDatabase
-	) { 
-		let restaurants = this.db.list('/path');
-	}
+		private http: HttpClient
+	) { }
 
 
 	public filteredHotels$ = this.filterHotelsSource$.asObservable();
