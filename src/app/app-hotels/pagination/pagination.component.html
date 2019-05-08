@@ -1,4 +1,4 @@
 <div class="pagination">
-    <button (click)="Prev($event)">Prev</button>
-    <button (click)="Next($event)">Next</button>
+	<button (click)="Prev($event)" [disabled]="!this.prevUrl">Prev</button>
+	<button (click)="Next($event)" [disabled]="!this.nextUrl">Next</button>
 </div>

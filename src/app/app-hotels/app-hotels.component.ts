@@ -15,17 +15,21 @@ export class AppHotelsComponent implements OnInit {
 
 	constructor(
 		private hotelService: HotelService
-	) { 
-		this.hotelService.hotelsList$.subscribe( data => {
+	) {
+		this.hotelService.hotelsList$.subscribe(data => {
 			this.hotels = data;
 			this.selectedHotel = data[0];
+		})
+
+		this.hotelService.filteredHotels$.subscribe(data => {
+			this.hotels = data;
 		})
 	}
 
 	ngOnInit() {
 		this.hotelService.getDefaultHotelsList();
 	}
-	
+
 
 	selectHotel(hotel: Hotel) {
 		this.selectedHotel = hotel;

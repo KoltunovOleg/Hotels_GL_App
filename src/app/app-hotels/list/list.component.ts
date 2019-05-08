@@ -18,20 +18,26 @@ export class ListComponent implements OnInit {
 	private searchText$ = this.searchTextSourse$.asObservable();
 	private rating$ = this.ratingSourse$.asObservable();
 
-	public hotels: Hotel[];
+	// public hotels: Hotel[];
 	public picture: string = "assets/images/1.jpg";
 
 	constructor(
 		private favHotelService: FavoritesService,
 		private filterService: HotelService
-	) { }
+	) {
+		this.filter$.subscribe(val => {
+			this.filterService.filterHotels(val).subscribe(data => {
+				this.hotels = data;
+			});
+		})
+	}
 
-	@Input('hotels') hotelsArr: Hotel[];
+	@Input() hotels: Hotel[];
 
 	@Output() selectedHotel = new EventEmitter<Hotel>();
 
 	ngOnInit(): void {
-		this.getFilteredList();
+		// this.getFilteredList();
 	}
 
 	public selectHotel(hotel: Hotel): void {
@@ -54,15 +60,15 @@ export class ListComponent implements OnInit {
 
 	private filter$: Observable<any> = this.searchText$.pipe(startWith(0))
 		.pipe(combineLatest(
-			this.rating$.pipe(startWith(0))
+			this.rating$.pipe(startWith(0)),
 		))
 
 	private getFilteredList(): void {
-		this.filter$.subscribe(val => {
-			this.filterService.filterHotels(val).subscribe(data => {
-				this.hotels = data;
-			});
-		})
+		// this.filter$.subscribe(val => {
+		// 	this.filterService.filterHotels(val).subscribe(data => {
+		// 		this.hotels = data;
+		// 	});
+		// })
 	}
-	
+
 }
