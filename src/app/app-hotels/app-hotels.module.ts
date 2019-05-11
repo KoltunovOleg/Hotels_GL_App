@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { PrealoadDirective } from './directive/preaload.directive';
 import { PaginationComponent } from './pagination/pagination.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   providers: [HotelService, MatSnackBarModule],
   exports: [AppHotelsComponent]

@@ -19,7 +19,7 @@ export class AppHotelsComponent implements OnInit {
 		this.hotelService.hotelsList$.subscribe(data => {
 			this.hotels = data;
 			this.selectedHotel = data[0];
-			console.log('this.hotels: ', this.hotels)
+			// console.log('this.hotels: ', this.hotels)
 		})
 
 		this.hotelService.filteredHotels$.subscribe(data => {

@@ -9,10 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class HotelService {
 
-	private url: string = `${environment.baseUrl}/hotels?_page=1&_limit=5`;
+	private url: string = `${environment.baseUrl}/hotels`;
+	private baseReq: string = '?_page=1&_limit=5';
 	private filterHotelsSource$ = new Subject<Hotel[]>();
 	private hotelsSource$ = new Subject<Hotel[]>();
 	private paginationSource$ = new Subject<IPagination>();
+	private hotelDetailSource$ = new Subject<Hotel>();
 
 	constructor(
 		private http: HttpClient
@@ -22,11 +24,12 @@ export class HotelService {
 	public filteredHotels$ = this.filterHotelsSource$.asObservable();
 	public hotelsList$ = this.hotelsSource$.asObservable();
 	public pagination$ = this.paginationSource$.asObservable();
+	public hotelDetail$ = this.hotelDetailSource$.asObservable();
 
 
 
 	public getDefaultHotelsList() {
-		this.getHotelsList(this.url);
+		this.getHotelsList(`${this.url}${this.baseReq}`);
 	}
 
 	public filterHotels(value: Array<any>) {
@@ -46,7 +49,7 @@ export class HotelService {
 			}
 		}, '');
 
-		this.http.get<any>(this.url + endPoint,{observe: 'response'}).subscribe(res => {
+		this.http.get<any>(`${this.url}${this.baseReq}` + endPoint,{observe: 'response'}).subscribe(res => {
 			// console.log(res.headers.get('X-Total-Count'));
 			this.parseResponse(res.headers.get('link'))
 			return this.filterHotelsSource$.next(res.body);
@@ -60,6 +63,12 @@ export class HotelService {
 			this.parseResponse(res.headers.get('link'))
 			return this.hotelsSource$.next(res.body);
 		})
+	}
+
+	public getHotelDetail(id:number){
+		this.http.get<any>(`${this.url}/${id}`, {observe: 'response'}).subscribe(res => {
+			this.hotelDetailSource$.next(res.body);
+		});
 	}
 
 	private parseResponse(res: any):any {

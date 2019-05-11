@@ -17,7 +17,7 @@ export class PaginationComponent{
     private hotelService: HotelService
   ) { 
     this.hotelService.pagination$.subscribe( data => {
-      console.log(data)
+      // console.log(data)
       if(data['prev']) {
         this.isPrev = true;
         this.prevURL = data['prev'];
