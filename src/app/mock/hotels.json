@@ -1201,5 +1201,16 @@
       "stars": 2
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "key": 3,
+      "title": "VonRueden and Sons",
+      "id": 2
+    },
+    {
+      "key": 0,
+      "title": "VonRueden Inc",
+      "id": 3
+    }
+  ]
 }

@@ -32,3 +32,10 @@ export interface IFavHotel {
 	key: number;
 	title: string;
 }
+
+export interface IPagination {
+	first?: string;
+	last?: string;
+	prev?: string;
+	next?: string;
+}

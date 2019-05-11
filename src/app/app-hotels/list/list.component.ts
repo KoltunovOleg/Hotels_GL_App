@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 	private searchText$ = this.searchTextSourse$.asObservable();
 	private rating$ = this.ratingSourse$.asObservable();
 
-	public hotels: Hotel[];
+	// public hotels: Hotel[];
 	public picture: string = "assets/images/1.jpg";
 
 	constructor(
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
 		private filterService: HotelService
 	) { }
 
-	@Input('hotels') hotelsArr: Hotel[];
+	@Input('hotels') hotels: Hotel[];
 
 	@Output() selectedHotel = new EventEmitter<Hotel>();
 
