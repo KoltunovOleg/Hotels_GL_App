@@ -24,14 +24,20 @@ export class ListComponent implements OnInit {
 	constructor(
 		private favHotelService: FavoritesService,
 		private filterService: HotelService
-	) { }
+	) {
+		this.filter$.subscribe(val => {
+			this.filterService.filterHotels(val).subscribe(data => {
+				this.hotels = data;
+			});
+		})
+	}
 
 	@Input('hotels') hotels: Hotel[];
 
 	@Output() selectedHotel = new EventEmitter<Hotel>();
 
 	ngOnInit(): void {
-		this.getFilteredList();
+		// this.getFilteredList();
 	}
 
 	public selectHotel(hotel: Hotel): void {
@@ -54,15 +60,15 @@ export class ListComponent implements OnInit {
 
 	private filter$: Observable<any> = this.searchText$.pipe(startWith(0))
 		.pipe(combineLatest(
-			this.rating$.pipe(startWith(0))
+			this.rating$.pipe(startWith(0)),
 		))
 
 	private getFilteredList(): void {
-		this.filter$.subscribe(val => {
-			this.filterService.filterHotels(val).subscribe(data => {
-				this.hotels = data;
-			});
-		})
+		// this.filter$.subscribe(val => {
+		// 	this.filterService.filterHotels(val).subscribe(data => {
+		// 		this.hotels = data;
+		// 	});
+		// })
 	}
-	
+
 }
