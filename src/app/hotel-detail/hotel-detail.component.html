@@ -1,24 +1,32 @@
 <div class="container">
     <div class="row">
-        <div class="col-8">
-            <ul>
-                <li><b>Title:</b> {{hotel?.title}}</li>
-                <li><b>Description:</b> {{hotel?.description}}</li>
-                <li><b>Address:</b> {{hotel?.address}}</li>
-                <li><b>Phone:</b> {{hotel?.phone}}</li>
-                <li><b>Rating:</b> {{hotel?.stars}} stars</li>
+        <div class="col-7">
+            <div class="hotel-info">
+                <h4>{{hotel?.title}} Hotel</h4>
+                <div class="rating">
+                    <mat-icon *ngFor="let star of [].constructor(hotel.stars)">star</mat-icon>
+                </div>
+                <p>{{hotel?.description}}</p>
+                <ul class="detail-list">
+                    <li><b>Address:</b> {{hotel?.address}}</li>
+                    <li><b>Phone:</b> {{hotel?.phone}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 aside">
+            <ul class="sidebar-menu">
+                <li>
+                    <a mat-stroked-button [routerLink]="['comments']" routerLinkActive="active">
+                        <mat-icon class="icon">comment</mat-icon>Comments</a>
+                </li>
+                <li>
+
+                    <a mat-stroked-button>
+                        <mat-icon class="icon">location_on</mat-icon>Contacts</a>
+                </li>
             </ul>
         </div>
-        <div class="col-4">
-            <aside>
-                <ul>
-                    <li><a [routerLink]="['comments']" routerLinkActive="active">comments</a></li>
-                    <li><a routerLink="/contacts" routerLinkActive="active">contacts</a></li>
-                </ul>
-            </aside>
-        </div>
     </div>
-    <div class="row">
-        <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
 </div>

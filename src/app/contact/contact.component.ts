@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
 
-  constructor() { }
+  public checked: boolean = false;
 
-  ngOnInit() {
-  }
+  onChange(event, index, item) {
+
+    this.checked = !this.checked;
+
+}
 
 }

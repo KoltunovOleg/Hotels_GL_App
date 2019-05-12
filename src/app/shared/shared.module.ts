@@ -8,6 +8,7 @@ import {
 	MatIconModule, MatDividerModule
 } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatCheckboxModule} from '@angular/material';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 		MatAutocompleteModule,
 		MatIconModule,
 		MatDividerModule,
-		MatProgressBarModule
+		MatProgressBarModule,
+		MatCheckboxModule
 	],
 	exports: [
 		MatAutocompleteModule,
@@ -33,7 +35,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 		MatInputModule,
 		MatIconModule,
 		MatDividerModule,
-		MatProgressBarModule
+		MatProgressBarModule,
+		MatCheckboxModule
 	]
 })
 

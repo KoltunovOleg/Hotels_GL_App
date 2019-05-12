@@ -1,7 +1,12 @@
 <div class="filter-holder">
-	<ul class="filter list-unstyled">
-		<li *ngFor="let range of rating; let i = index">
-			<a href="#" [attr.data-range]="i" (click)="getRange($event, $event.target)">{{range}}</a>
-		</li>
-	</ul>
+    <ul class="filter list-unstyled">
+        <li *ngFor="let range of rating; let i = index">
+            <a mat-button href="#" [attr.data-range]="i" (click)="getRange($event, $event.target)">
+                <span *ngIf='!isNumber(range);  else elseBlock'>{{range}}</span>
+                <ng-template #elseBlock>
+                    <mat-icon class="stars" *ngFor="let star of [].constructor(range)">star</mat-icon>
+                </ng-template>
+            </a>
+        </li>
+    </ul>
 </div>

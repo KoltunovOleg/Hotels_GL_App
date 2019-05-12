@@ -9,7 +9,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Hotels</a>
                     <a class="nav-item nav-link" routerLink="/about" routerLinkActive="active">About this project</a>
-                    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+                    <a *ngIf="isUserAuth" class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
                     <a class="nav-item nav-link" routerLink="/contact" routerLinkActive="active">Contacts us</a>
                 </div>
             </div>

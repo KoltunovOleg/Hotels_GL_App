@@ -7,11 +7,15 @@ import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
 import { HotelDetailComponent } from '../hotel-detail/hotel-detail.component';
 import { CommentsComponent } from '../hotel-detail/comments/comments.component';
+import { ExitContactGuard } from './exit-contact.guard';
+import { AuthGuard } from '../auth/auth.guard';
+import { UserComponent } from '../user/user.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppHotelsComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'contact', component: ContactComponent},
+  { path: 'users', component: UserComponent, canActivate: [AuthGuard]},
+  { path: 'contact', component: ContactComponent, canDeactivate: [ExitContactGuard]},
   { path: 'hotel-detail/:id', component: HotelDetailComponent, children:[
     {path: 'comments', component: CommentsComponent}
   ]},

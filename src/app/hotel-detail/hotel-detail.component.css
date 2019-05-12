@@ -1,0 +1,41 @@
+.hotel-info {
+    padding: 0 25px;
+}
+
+.detail-list {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-list li {
+    margin-bottom: 10px;
+}
+
+.aside {
+    border-left: 1px solid #000;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0 0 0 15px;
+    text-transform: uppercase;
+}
+
+.sidebar-menu li {
+    margin-bottom: 12px;
+    /* font-size: 20px; */
+}
+
+.sidebar-menu a {
+    color: darkslategray;
+    text-decoration: none;
+    min-width: 145px;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.rating {
+    color: goldenrod;
+}

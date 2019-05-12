@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { Hotel } from '../interfaces/interfaces';
 import { HotelService } from '../services/hotel.service';
 
@@ -20,12 +18,11 @@ export class HotelDetailComponent implements OnInit {
 
     ngOnInit() {
       this.activateRoute.params.subscribe((params: ParamMap)=>{
-        console.log(params)
         this.hotelService.getHotelDetail(params['id']);
-        this.hotelService.hotelDetail$.subscribe(data => {
-            this.hotel = data;
-        })
       });
+      this.hotelService.hotelDetail$.subscribe(data => {
+        this.hotel = data;
+    })
     }
 
 }

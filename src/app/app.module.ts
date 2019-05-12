@@ -15,6 +15,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { CommentsComponent } from './hotel-detail/comments/comments.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { CommentsComponent } from './hotel-detail/comments/comments.component';
     AboutComponent,
     ContactComponent,
     HotelDetailComponent,
-    CommentsComponent
+    CommentsComponent,
+    UserComponent
   ],
   imports: [
     AppHotelsModule,
@@ -33,7 +37,9 @@ import { CommentsComponent } from './hotel-detail/comments/comments.component';
     MatSnackBarModule,
     MatDialogModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,9 +8,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class FilterComponent {
 
-	public rating: Array<string> = ["All", "***", "****", "*****"];
-
+	public rating: Array<string|number> = ["All", 3, 4, 5];
+	
 	@Output() selectedRaiting = new EventEmitter();
+	
+	isNumber(val) { return typeof val === 'number'; }
 
 	getRange(event: MouseEvent, elem: HTMLLinkElement): void {
 		event.preventDefault();
