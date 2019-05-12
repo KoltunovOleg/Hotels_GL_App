@@ -12,6 +12,7 @@ export interface Hotel {
 	weather: IWeather;
 	profile: IProfile;
 	stars: number;
+	comments?: IComment[]
 }
 
 
@@ -38,4 +39,10 @@ export interface IPagination {
 	last?: string;
 	prev?: string;
 	next?: string;
+}
+
+export interface IComment {
+	author: string;
+	date: string;
+	comment: string
 }

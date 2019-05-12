@@ -14,6 +14,7 @@ import { Router} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
+import { CommentsComponent } from './hotel-detail/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
     FooterComponent,
     AboutComponent,
     ContactComponent,
-    HotelDetailComponent
+    HotelDetailComponent,
+    CommentsComponent
   ],
   imports: [
     AppHotelsModule,

@@ -2,20 +2,23 @@
     <div class="row">
         <div class="col-8">
             <ul>
-                <li>Title: {{hotel?.title}}</li>
-                <li>Description: {{hotel?.description}}</li>
-                <li>Address: {{hotel?.address}}</li>
-                <li>Phone: {{hotel?.phone}}</li>
-                <li>Rating: {{hotel?.stars}} stars</li>
+                <li><b>Title:</b> {{hotel?.title}}</li>
+                <li><b>Description:</b> {{hotel?.description}}</li>
+                <li><b>Address:</b> {{hotel?.address}}</li>
+                <li><b>Phone:</b> {{hotel?.phone}}</li>
+                <li><b>Rating:</b> {{hotel?.stars}} stars</li>
             </ul>
         </div>
         <div class="col-4">
             <aside>
                 <ul>
-                    <li><a routerLink="/comments" routerLinkActive="active">comments</a></li>
+                    <li><a [routerLink]="['comments']" routerLinkActive="active">comments</a></li>
                     <li><a routerLink="/contacts" routerLinkActive="active">contacts</a></li>
                 </ul>
             </aside>
         </div>
+    </div>
+    <div class="row">
+        <router-outlet></router-outlet>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hotel, IPagination } from '../interfaces/interfaces';
+import { Hotel, IPagination, IComment } from '../interfaces/interfaces';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -15,6 +15,7 @@ export class HotelService {
 	private hotelsSource$ = new Subject<Hotel[]>();
 	private paginationSource$ = new Subject<IPagination>();
 	private hotelDetailSource$ = new Subject<Hotel>();
+	private hotelCommentsSource$ = new Subject<IComment>();
 
 	constructor(
 		private http: HttpClient
@@ -25,6 +26,7 @@ export class HotelService {
 	public hotelsList$ = this.hotelsSource$.asObservable();
 	public pagination$ = this.paginationSource$.asObservable();
 	public hotelDetail$ = this.hotelDetailSource$.asObservable();
+	public hotelComments$ = this.hotelCommentsSource$.asObservable();
 
 
 
@@ -68,6 +70,12 @@ export class HotelService {
 	public getHotelDetail(id:number){
 		this.http.get<any>(`${this.url}/${id}`, {observe: 'response'}).subscribe(res => {
 			this.hotelDetailSource$.next(res.body);
+		});
+	}
+
+	public getHotelComments(id:number){
+		this.http.get<any>(`${this.url}/${id}`, {observe: 'response'}).subscribe(res => {
+			this.hotelCommentsSource$.next(res.body.comments);
 		});
 	}
 
