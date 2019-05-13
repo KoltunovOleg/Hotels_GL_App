@@ -13,7 +13,7 @@ export class HotelService {
 	private baseReq: string = '?_page=1&_limit=5';
 	private filterHotelsSource$ = new Subject<Hotel[]>();
 	private hotelsSource$ = new Subject<Hotel[]>();
-	private paginationSource$ = new Subject<IPagination>();
+	private paginationSource$ = new Subject<[IPagination, string]>();
 	private hotelDetailSource$ = new Subject<Hotel>();
 	private hotelCommentsSource$ = new Subject<IComment>();
 
@@ -53,7 +53,7 @@ export class HotelService {
 
 		this.http.get<any>(`${this.url}${this.baseReq}` + endPoint,{observe: 'response'}).subscribe(res => {
 			// console.log(res.headers.get('X-Total-Count'));
-			this.parseResponse(res.headers.get('link'))
+			this.parseResponse(res.headers.get('link'), res.url)
 			return this.filterHotelsSource$.next(res.body);
 		})
 		return this.filteredHotels$;
@@ -61,8 +61,7 @@ export class HotelService {
 
 	public getHotelsList(url:string) {
 		this.http.get<any>(url, {observe: 'response'}).subscribe(res => {
-			// console.log(res.headers.get('link'));
-			this.parseResponse(res.headers.get('link'))
+			this.parseResponse(res.headers.get('link'), res.url)
 			return this.hotelsSource$.next(res.body);
 		})
 	}
@@ -79,7 +78,7 @@ export class HotelService {
 		});
 	}
 
-	private parseResponse(res: any):any {
+	private parseResponse(res: any, url?:string):any {
 		const paginationInfoObject: IPagination = {};
 		const paginationInfo =  res.split(', ').map(i => {
 			return i.split('; ').map((i, index )=> {
@@ -90,11 +89,12 @@ export class HotelService {
 				}
 			})
 		});
+		const queryParams = url.substring(url.indexOf("?")+1);
 
 		paginationInfo.forEach(element => {
 			paginationInfoObject[element[1]] = element[0];
 		});
 
-		this.paginationSource$.next(paginationInfoObject);
+		this.paginationSource$.next([paginationInfoObject, queryParams]);
 	}
 }

@@ -10,9 +10,19 @@ import { CommentsComponent } from '../hotel-detail/comments/comments.component';
 import { ExitContactGuard } from './exit-contact.guard';
 import { AuthGuard } from '../auth/auth.guard';
 import { UserComponent } from '../user/user.component';
+import { ListComponent } from '../app-hotels/list/list.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppHotelsComponent},
+  { path: '', component: AppHotelsComponent ,
+  //  children:[
+  //   {path: 'hotels', component: ListComponent}
+  // ]
+},
+{ path: 'hotels', component: AppHotelsComponent ,
+// //  children:[
+// //   {path: 'hotels', component: ListComponent}
+// // ]
+},
   { path: 'about', component: AboutComponent},
   { path: 'users', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'contact', component: ContactComponent, canDeactivate: [ExitContactGuard]},

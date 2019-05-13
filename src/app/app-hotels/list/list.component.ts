@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { Hotel } from 'src/app/interfaces/interfaces';
 import { HotelService } from 'src/app/services/hotel.service';
@@ -12,7 +12,7 @@ import { startWith, combineLatest } from 'rxjs/operators';
 	templateUrl: './list.component.html',
 	styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent{
 
 	private searchTextSourse$ = new Subject<any>();
 	private ratingSourse$ = new Subject<any>();
@@ -37,9 +37,11 @@ export class ListComponent implements OnInit {
 
 	@Output() selectedHotel = new EventEmitter<Hotel>();
 
-	ngOnInit(): void {
-		// this.getFilteredList();
-	}
+	// ngOnInit(): void {
+
+	// 	// this.router.navigate(['/hotels'], {queryParams: {id: 3}});
+	// 	console.log(this.route.snapshot.queryParams)
+	// }
 
 	public selectHotel(hotel: Hotel): void {
 		this.selectedHotel.emit(hotel);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from "../services/hotel.service";
 import { Hotel } from '../interfaces/interfaces';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-hotels',
@@ -14,12 +15,12 @@ export class AppHotelsComponent implements OnInit {
 	public hotelsI: Hotel[];
 
 	constructor(
-		private hotelService: HotelService
+		private hotelService: HotelService,
+		private route: ActivatedRoute
 	) {
 		this.hotelService.hotelsList$.subscribe(data => {
 			this.hotels = data;
 			this.selectedHotel = data[0];
-			// console.log('this.hotels: ', this.hotels)
 		})
 
 		this.hotelService.filteredHotels$.subscribe(data => {

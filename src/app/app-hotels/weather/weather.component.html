@@ -1,8 +1,8 @@
 <mat-card class="weather-card text-center px-5 mb-5">
-    <h5 *ngIf="hotel">{{hotel.title}}</h5>
+    <h5 *ngIf="hotel">{{hotel?.title}}</h5>
     <hr>
-    <span class="clouds">{{hotel.weather.icon}}</span>
-    <span class="temperature">{{hotel.weather.temperature}}&ordm;</span>
+    <span class="clouds">{{hotel?.weather.icon}}</span>
+    <span class="temperature">{{hotel?.weather.temperature}}&ordm;</span>
     <hr>
-    <span class="wind">Wind {{hotel.weather.wind}}</span>
+    <span class="wind">Wind {{hotel?.weather.wind}}</span>
 </mat-card>

@@ -4,7 +4,7 @@
             <div class="hotel-info">
                 <h4>{{hotel?.title}} Hotel</h4>
                 <div class="rating">
-                    <mat-icon *ngFor="let star of [].constructor(hotel.stars)">star</mat-icon>
+                    <mat-icon *ngFor="let star of [].constructor(hotel?.stars)">star</mat-icon>
                 </div>
                 <p>{{hotel?.description}}</p>
                 <ul class="detail-list">
