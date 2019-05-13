@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HotelService } from 'src/app/services/hotel.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-pagination',
@@ -14,6 +15,7 @@ export class PaginationComponent{
   private prevURL: string;
   private nextURL: string;
   private qParams: object;
+  private url: string = `${environment.baseUrl}/hotels`;
 
   constructor(
     private hotelService: HotelService,
@@ -37,16 +39,20 @@ export class PaginationComponent{
         this.nextURL = null;
       }
 
-      
       this.qParams = JSON.parse('{"' + data[1].replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) });;
       this.router.navigate(['/hotels'], {queryParams: this.qParams});
     })
   }
-
+  
   ngOnInit(): void {
-
-		// this.router.navigate(['/hotels'], {queryParams: this.qParams});
+    
+    // this.router.navigate(['/hotels'], {queryParams: this.qParams});
     console.log(this.route.snapshot.queryParams);
+    const params = this.route.snapshot.queryParams;
+    const queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
+    console.log(queryString);
+    this.hotelService.getHotelsList(`${this.url}?${queryString}`);
+    // this.router.navigate(['/hotels'], {queryParams: this.qParams});
   }
 
   public Prev(event: MouseEvent) {
