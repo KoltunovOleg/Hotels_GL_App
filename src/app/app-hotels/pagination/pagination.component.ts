@@ -1,27 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { HotelService } from 'src/app/services/hotel.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-pagination',
 	templateUrl: './pagination.component.html',
 	styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent{
+export class PaginationComponent implements OnDestroy{
 
-  private isNext: boolean;
-  private isPrev: boolean;
+  private subscriptions: Subscription = new Subscription();
   private prevURL: string;
   private nextURL: string;
   private qParams: object;
   private url: string = `${environment.baseUrl}/hotels`;
+
+  public isNext: boolean;
+  public isPrev: boolean;
 
   constructor(
     private hotelService: HotelService,
 		private route: ActivatedRoute,
 		private router: Router
   ) { 
+    this.subscriptions.add(
     this.hotelService.pagination$.subscribe( data => {
       if(data[0]['prev']) {
         this.isPrev = true;
@@ -41,18 +45,14 @@ export class PaginationComponent{
 
       this.qParams = JSON.parse('{"' + data[1].replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) });;
       this.router.navigate(['/hotels'], {queryParams: this.qParams});
-    })
+    }))
   }
   
   ngOnInit(): void {
-    
-    // this.router.navigate(['/hotels'], {queryParams: this.qParams});
-    console.log(this.route.snapshot.queryParams);
     const params = this.route.snapshot.queryParams;
     const queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
-    console.log(queryString);
+   
     this.hotelService.getHotelsList(`${this.url}?${queryString}`);
-    // this.router.navigate(['/hotels'], {queryParams: this.qParams});
   }
 
   public Prev(event: MouseEvent) {
@@ -64,5 +64,9 @@ export class PaginationComponent{
     // console.log("Next event: ",this.nextURL);
     this.hotelService.getHotelsList(this.nextURL)
   }
+
+  ngOnDestroy() {
+		this.subscriptions.unsubscribe();
+	}
 
 }

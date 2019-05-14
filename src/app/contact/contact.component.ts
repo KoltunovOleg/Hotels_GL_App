@@ -9,7 +9,7 @@ export class ContactComponent {
 
   public checked: boolean = false;
 
-  onChange(event, index, item) {
+  onChange() {
 
     this.checked = !this.checked;
 

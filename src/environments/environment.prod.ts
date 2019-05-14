@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	baseUrl: 'http://localhost:3004'
+	baseUrl: 'https://app-hotels-gl.herokuapp.com'
 };

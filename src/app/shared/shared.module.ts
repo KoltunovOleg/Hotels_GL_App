@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import {
 	MatAutocompleteModule, MatCardModule, MatButtonModule,
 	MatListModule, MatFormFieldModule, MatInputModule,
-	MatIconModule, MatDividerModule
+	MatIconModule, MatDividerModule, MatButtonToggleModule
 } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material';
@@ -24,7 +24,8 @@ import {MatCheckboxModule} from '@angular/material';
 		MatIconModule,
 		MatDividerModule,
 		MatProgressBarModule,
-		MatCheckboxModule
+		MatCheckboxModule,
+		MatButtonToggleModule
 	],
 	exports: [
 		MatAutocompleteModule,
@@ -36,7 +37,8 @@ import {MatCheckboxModule} from '@angular/material';
 		MatIconModule,
 		MatDividerModule,
 		MatProgressBarModule,
-		MatCheckboxModule
+		MatCheckboxModule,
+		MatButtonToggleModule
 	]
 })
 

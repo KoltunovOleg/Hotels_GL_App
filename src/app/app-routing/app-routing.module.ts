@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'hotel-detail/:id', component: HotelDetailComponent, children:[
     {path: 'comments', component: CommentsComponent}
   ]},
-  { path: '**', redirectTo: '/'}
+  { path: '**', redirectTo: 'hotels'}
 ];
 
 @NgModule({

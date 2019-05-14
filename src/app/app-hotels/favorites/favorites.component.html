@@ -2,15 +2,14 @@
     <h5 class="pt-2">My favorite hotels</h5>
     <mat-divider></mat-divider>
     <ng-template [ngIf]="favHotels?.length" [ngIfElse]="placeholder">
-        <mat-list>
-            <mat-list-item *ngFor="let hotel of favHotels">
+        <ul class="hotel-list">
+            <li class="hotel-item" *ngFor="let hotel of favHotels">
                 <h5>{{hotel?.title}}</h5>
                 <button mat-icon-button color="primary" (click)="delFavorite(hotel)">
-					<mat-icon aria-label="Example icon-button with a highlight_off icon">highlight_off</mat-icon>
+					<mat-icon aria-label="Delete">clear</mat-icon>
 				</button>
-                <mat-divider></mat-divider>
-            </mat-list-item>
-        </mat-list>
+            </li>
+        </ul>
     </ng-template>
 </mat-card>
 

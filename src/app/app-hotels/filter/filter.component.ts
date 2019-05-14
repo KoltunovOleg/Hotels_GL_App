@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class FilterComponent {
+	// private isActive: boolean;
 
 	public rating: Array<string|number> = ["All", 3, 4, 5];
 	
@@ -14,7 +15,8 @@ export class FilterComponent {
 	
 	isNumber(val) { return typeof val === 'number'; }
 
-	getRange(event: MouseEvent, elem: HTMLLinkElement): void {
+	getRange(event: MouseEvent, elem: HTMLElement): void {
+		// console.log(elem)
 		event.preventDefault();
 		const valueAttr: string = elem.attributes['data-range'].value;
 		this.selectedRaiting.emit(valueAttr);

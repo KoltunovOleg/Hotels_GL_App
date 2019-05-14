@@ -1,13 +1,13 @@
-<header class="text-center p-2 mb-3">
+<header class="text-center mb-3">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" routerLink="/"><img src="./assets/images/logo.svg" width="50" height="50" alt="Hotels_GL_App"></a>
+            <a class="navbar-brand" routerLink="/hotels"><img src="./assets/images/logo.svg" width="50" height="50" alt="Hotels_GL_App"></a>
             <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" [attr.aria-expanded]="!isCollapsed" (click)="toggleCollapse()" [ngClass]="{'collapsed': isCollapsed}">
 				<span class="navbar-toggler-icon"></span>
 			</button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup" [ngClass]="{'show': !isCollapsed}">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Hotels</a>
+                    <a class="nav-item nav-link" routerLink="/hotels" routerLinkActive="active">Hotels</a>
                     <a class="nav-item nav-link" routerLink="/about" routerLinkActive="active">About this project</a>
                     <a *ngIf="isUserAuth" class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
                     <a class="nav-item nav-link" routerLink="/contact" routerLinkActive="active">Contacts us</a>

@@ -10,7 +10,7 @@ import { IComment } from 'src/app/interfaces/interfaces';
 })
 export class CommentsComponent implements OnInit {
 
-  private comments: IComment
+  public comments: IComment
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -25,4 +25,5 @@ export class CommentsComponent implements OnInit {
       this.comments = data;
     });
   }
+  
 }

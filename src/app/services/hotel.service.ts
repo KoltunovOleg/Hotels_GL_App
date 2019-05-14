@@ -79,6 +79,8 @@ export class HotelService {
 	}
 
 	private parseResponse(res: any, url?:string):any {
+		// console.log(res);
+		if(res){
 		const paginationInfoObject: IPagination = {};
 		const paginationInfo =  res.split(', ').map(i => {
 			return i.split('; ').map((i, index )=> {
@@ -96,5 +98,6 @@ export class HotelService {
 		});
 
 		this.paginationSource$.next([paginationInfoObject, queryParams]);
+	}
 	}
 }
